@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 // リスト一覧画面用Widget
 class TodoListPage extends StatelessWidget {
