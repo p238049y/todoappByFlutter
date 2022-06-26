@@ -8,14 +8,31 @@ class TodoAddPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('リスト追加'),
       ),
-      body: Center(
-        child: TextButton(
-          // ボタンをクリックした時の処理
-          onPressed: () {
-            // "pop"で前の画面に戻る
-            Navigator.of(context).pop();
-          },
-          child: const Text('リスト追加画面（クリックで戻る）'),
+      body: Container(
+        padding: const EdgeInsets.all(64),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const TextField(),
+            const SizedBox(height: 8),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: const Text('リスト追加', style: TextStyle(color: Colors.white)),
+              ),
+            ),
+            const SizedBox(height: 8),
+            SizedBox(
+              width: double.infinity,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                }, 
+                child: const Text('キャンセル'),
+              ),
+            ),
+          ]
         ),
       ),
     );
