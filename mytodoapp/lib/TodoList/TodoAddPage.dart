@@ -6,7 +6,7 @@ class TodoAddPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('リスト追加もどき'),
+        title: const Text('リスト追加'),
       ),
       body: Center(
         child: TextButton(
