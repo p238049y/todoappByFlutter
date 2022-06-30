@@ -33,7 +33,9 @@ class _TodoAddPageState extends State<TodoAddPage> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pop(_text);
+                },
                 child: const Text('リスト追加', style: TextStyle(color: Colors.white)),
               ),
             ),
