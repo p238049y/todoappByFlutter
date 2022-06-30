@@ -1,5 +1,6 @@
 // リスト追加画面用Widget
 import 'package:flutter/material.dart';
+import 'package:flutter_picker/flutter_picker.dart';
 
 class TodoAddPage extends StatefulWidget {
   @override
@@ -9,6 +10,7 @@ class TodoAddPage extends StatefulWidget {
 class _TodoAddPageState extends State<TodoAddPage> {
   // 入力されたテキストをデータとして持つ
   String _text = '';
+  DateTime? _datetime;
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +23,26 @@ class _TodoAddPageState extends State<TodoAddPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(_text, style: const TextStyle(color: Colors.blue)),
-            const SizedBox(height: 8),
             TextField(
               onChanged: (String value) {
                 setState(() {
                   _text = value;
                 });
               }
+            ),
+            TextButton(
+              child: Text('時間入力', style: TextStyle(decoration: TextDecoration.underline)), 
+              onPressed: () async {
+                Picker(
+                  adapter: DateTimePickerAdapter(type: PickerDateTimeType.kHMS, value: _datetime, customColumnType: [3, 4, 5]),
+                  title: Text('Select Time'),
+                  onConfirm: (Picker picker, List value) {
+                    setState(()  => {
+                      _datetime = DateTime.utc(0, 0, 0, value[0], value[1], value[2])
+                    });
+                  }
+                ).showModal(context);
+              },
             ),
             SizedBox(
               width: double.infinity,
