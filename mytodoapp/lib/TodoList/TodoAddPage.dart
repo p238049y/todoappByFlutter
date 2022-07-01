@@ -31,11 +31,11 @@ class _TodoAddPageState extends State<TodoAddPage> {
               }
             ),
             TextButton(
-              child: Text('時間入力', style: TextStyle(decoration: TextDecoration.underline)), 
+              child: const Text('時間入力', style: TextStyle(decoration: TextDecoration.underline)), 
               onPressed: () async {
                 Picker(
                   adapter: DateTimePickerAdapter(type: PickerDateTimeType.kHMS, value: _datetime, customColumnType: [3, 4, 5]),
-                  title: Text('Select Time'),
+                  title: const Text('Select Time'),
                   onConfirm: (Picker picker, List value) {
                     setState(()  => {
                       _datetime = DateTime.utc(0, 0, 0, value[0], value[1], value[2])
