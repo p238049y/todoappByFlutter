@@ -6,11 +6,17 @@ class TodoAddPage extends StatefulWidget {
   @override
   _TodoAddPageState createState() => _TodoAddPageState();
 }
+class DisplayData {
+  String text = '';
+  DateTime? dateTime;
+}
 
 class _TodoAddPageState extends State<TodoAddPage> {
   // 入力されたテキストをデータとして持つ
   String _text = '';
   DateTime? _datetime;
+
+  DisplayData displayData = DisplayData();
 
   @override
   Widget build(BuildContext context) {
