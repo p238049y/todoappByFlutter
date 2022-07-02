@@ -19,6 +19,7 @@ class _TodoListPageState extends State<TodoListPage> {
       body: ListView.builder(
           itemCount: todoList.length,
           itemBuilder: (context, index) {
+            print(todoList);
             return Card(
               child: ListTile(
                 title: Text(todoList[index]),
