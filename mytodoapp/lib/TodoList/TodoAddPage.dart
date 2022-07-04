@@ -33,6 +33,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
               onChanged: (String value) {
                 setState(() {
                   _text = value;
+                  displayData.text = value;
                 });
               }
             ),
@@ -44,7 +45,8 @@ class _TodoAddPageState extends State<TodoAddPage> {
                   title: const Text('Select Time'),
                   onConfirm: (Picker picker, List value) {
                     setState(()  => {
-                      _datetime = DateTime.utc(0, 0, 0, value[0], value[1], value[2])
+                      // _datetime = DateTime.utc(0, 0, 0, value[0], value[1], value[2])
+                      displayData.dateTime = DateTime.utc(0, 0, 0, value[0], value[1], value[2])
                     });
                   }
                 ).showModal(context);
@@ -54,7 +56,9 @@ class _TodoAddPageState extends State<TodoAddPage> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pop(_text);
+                  // Navigator.of(context).pop(_text);
+                  // Navigator.of(context).pop(_datetime);
+                  Navigator.of(context).pop(displayData);
                 },
                 child: const Text('リスト追加', style: TextStyle(color: Colors.white)),
               ),
