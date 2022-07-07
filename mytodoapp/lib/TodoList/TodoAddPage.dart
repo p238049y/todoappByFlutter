@@ -8,7 +8,7 @@ class TodoAddPage extends StatefulWidget {
 }
 class DisplayData {
   String text = '';
-  DateTime? dateTime;
+  late DateTime dateTime;
 }
 
 class _TodoAddPageState extends State<TodoAddPage> {

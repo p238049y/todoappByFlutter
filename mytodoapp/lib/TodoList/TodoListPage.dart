@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:mytodoapp/TodoList/TodoAddPage.dart';
 
 // リスト一覧画面用Widget
@@ -8,7 +9,7 @@ class TodoListPage extends StatefulWidget {
 }
 
 class _TodoListPageState extends State<TodoListPage> {
-  List<String> todoList = [];
+  List<DisplayData> todoList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +20,10 @@ class _TodoListPageState extends State<TodoListPage> {
       body: ListView.builder(
           itemCount: todoList.length,
           itemBuilder: (context, index) {
-            print(todoList);
+            print(todoList[index].dateTime);
             return Card(
               child: ListTile(
-                title: Text(todoList[index]),
+                title: Text(DateFormat('HH:mm:ss').format(todoList[index].dateTime)),
               ),
             );
           }
