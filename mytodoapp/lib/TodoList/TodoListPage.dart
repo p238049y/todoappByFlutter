@@ -20,10 +20,10 @@ class _TodoListPageState extends State<TodoListPage> {
       body: ListView.builder(
           itemCount: todoList.length,
           itemBuilder: (context, index) {
-            print(todoList[index].dateTime);
             return Card(
               child: ListTile(
-                title: Text(DateFormat('HH:mm:ss').format(todoList[index].dateTime)),
+                title: Text(todoList[index].text),
+                subtitle: Text(DateFormat('HH:mm:ss').format(todoList[index].dateTime)),
               ),
             );
           }
