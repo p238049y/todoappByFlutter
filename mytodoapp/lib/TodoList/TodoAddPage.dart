@@ -56,7 +56,11 @@ class _TodoAddPageState extends State<TodoAddPage> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pop(displayData);
+                  if (displayData.text.isEmpty || displayData.dateTime == '') {
+                    return;
+                  } else {
+                    Navigator.of(context).pop(displayData);
+                  }
                 },
                 child: const Text('リスト追加', style: TextStyle(color: Colors.white)),
               ),
