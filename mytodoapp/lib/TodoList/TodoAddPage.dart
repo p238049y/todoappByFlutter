@@ -34,7 +34,9 @@ class _TodoAddPageState extends State<TodoAddPage> {
                 setState(() {
                   displayData.text = value;
                 });
-              }
+              },
+              // autovalidateMode: AutovalidateMode.onUserInteraction,
+              // validator: DescriptionValidator.validate,
             ),
             TextButton(
               child: const Text('時間入力', style: TextStyle(decoration: TextDecoration.underline)), 
