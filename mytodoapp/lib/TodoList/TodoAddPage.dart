@@ -32,7 +32,6 @@ class _TodoAddPageState extends State<TodoAddPage> {
             TextField(
               onChanged: (String value) {
                 setState(() {
-                  _text = value;
                   displayData.text = value;
                 });
               }
@@ -45,7 +44,6 @@ class _TodoAddPageState extends State<TodoAddPage> {
                   title: const Text('Select Time'),
                   onConfirm: (Picker picker, List value) {
                     setState(()  => {
-                      // _datetime = DateTime.utc(0, 0, 0, value[0], value[1], value[2])
                       displayData.dateTime = DateTime.utc(0, 0, 0, value[0], value[1], value[2])
                     });
                   }
