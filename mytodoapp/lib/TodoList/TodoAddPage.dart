@@ -36,6 +36,20 @@ class _TodoAddPageState extends State<TodoAddPage> {
                 });
               },
               autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (value) {
+                if (value!.contains(' ') && value.trim() == '') {
+                  return '空文字は受け付けていません。';
+                }
+
+                if (value.contains('　') && value.trim() == '') {
+                  return '空文字は受け付けていません。';
+                }
+
+                if (value.length > 30) {
+                  return '30文字以下にしてください';
+                }
+                return null;
+              }
             ),
             TextButton(
               child: const Text('時間入力', style: TextStyle(decoration: TextDecoration.underline)), 
