@@ -29,14 +29,13 @@ class _TodoAddPageState extends State<TodoAddPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextField(
+            TextFormField(
               onChanged: (String value) {
                 setState(() {
                   displayData.text = value;
                 });
               },
-              // autovalidateMode: AutovalidateMode.onUserInteraction,
-              // validator: DescriptionValidator.validate,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
             ),
             TextButton(
               child: const Text('時間入力', style: TextStyle(decoration: TextDecoration.underline)), 
