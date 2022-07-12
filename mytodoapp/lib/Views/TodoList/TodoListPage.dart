@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mytodoapp/TodoList/TodoAddPage.dart';
+import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
 
 // リスト一覧画面用Widget
 class TodoListPage extends StatefulWidget {
