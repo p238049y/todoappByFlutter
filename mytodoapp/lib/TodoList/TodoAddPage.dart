@@ -83,16 +83,6 @@ class _TodoAddPageState extends State<TodoAddPage> {
                 child: const Text('リスト追加', style: TextStyle(color: Colors.white)),
               ),
             ),
-            const SizedBox(height: 8),
-            SizedBox(
-              width: double.infinity,
-              child: TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                }, 
-                child: const Text('キャンセル'),
-              ),
-            ),
           ]
         ),
       ),
