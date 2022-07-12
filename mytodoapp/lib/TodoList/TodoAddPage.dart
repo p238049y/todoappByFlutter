@@ -8,7 +8,7 @@ class TodoAddPage extends StatefulWidget {
 }
 class DisplayData {
   String text = '';
-  late DateTime dateTime;
+  DateTime dateTime = DateTime.utc(0, 0, 0);
 }
 
 class _TodoAddPageState extends State<TodoAddPage> {
@@ -74,7 +74,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  if (displayData.text.isEmpty || displayData.dateTime == '') {
+                  if (displayData.text.isEmpty) {
                     return;
                   } else {
                     Navigator.of(context).pop(displayData);
