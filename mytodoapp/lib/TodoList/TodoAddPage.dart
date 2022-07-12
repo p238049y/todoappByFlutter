@@ -29,6 +29,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const Text('今からやること', textAlign: TextAlign.left),
             TextFormField(
               onChanged: (String value) {
                 setState(() {
@@ -50,6 +51,10 @@ class _TodoAddPageState extends State<TodoAddPage> {
                 }
                 return null;
               }
+            ),
+            Text(
+              DateFormat.Hms().format(displayData.dateTime),
+              style: Theme.of(context).textTheme.headline2,
             ),
             TextButton(
               child: const Text('時間入力', style: TextStyle(decoration: TextDecoration.underline)), 
