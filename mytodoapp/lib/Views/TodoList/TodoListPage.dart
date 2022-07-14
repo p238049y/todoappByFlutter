@@ -28,20 +28,40 @@ class _TodoListPageState extends State<TodoListPage> {
             );
           }
         ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final newListText = await Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) {
-              return TodoAddPage();
-            }),
-          );
-          if (newListText != null) {
-            setState(() {
-              todoList.add(newListText);
-            });
-          }
-        },
-        child: const Icon(Icons.add),
+      floatingActionButton: Column(
+        verticalDirection: VerticalDirection.up, // childrenの先頭を下に配置
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          FloatingActionButton(
+            backgroundColor: Colors.blue,
+            onPressed: () async {
+              final newListText = await Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) {
+                  return TodoAddPage();
+                }),
+              );
+              if (newListText != null) {
+                setState(() {
+                  todoList.add(newListText);
+                });
+              }
+            },
+            child: const Icon(Icons.add),
+          ),
+          Container( // 余白のためContainerでラップ
+            margin: EdgeInsets.only(bottom: 16.0), 
+            child: FloatingActionButton(
+              backgroundColor: Colors.amberAccent,
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) {
+                    return TodoAddPage();
+                  }),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
