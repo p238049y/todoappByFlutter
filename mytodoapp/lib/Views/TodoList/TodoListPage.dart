@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mytodoapp/Views/StopWatch/StopWatchPage.dart';
 import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
 
 // リスト一覧画面用Widget
@@ -56,7 +57,7 @@ class _TodoListPageState extends State<TodoListPage> {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) {
-                    return TodoAddPage();
+                    return StopWatchPage();
                   }),
                 );
               },
