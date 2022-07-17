@@ -37,28 +37,43 @@ class StopWatchPage extends StatelessWidget {
                   Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 50, right: 8),
-                        child: RaisedButton(
-                          color: Colors.redAccent,
-                          onPressed: model.isStopPressed ? null : model.stopStopWatch(),
-                          child: const Text('STOP'),
+                        padding: const EdgeInsets.only(left: 70, right: 8),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.red,
+                            onPrimary: Colors.grey,
+                          ),
+                          onPressed: model.isStopPressed ? null : model.stopStopWatch,
+                          child: const Text('STOP',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 30, right: 8),
-                        child: RaisedButton(
-                          color: Colors.green,
-                          onPressed: model.isResetPressed ? null : model.resetStopWatch(),
-                          child: const Text('RESET'),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.green,
+                            onPrimary: Colors.grey,
+                          ),
+                          onPressed: model.isResetPressed ? null : model.resetStopWatch,
+                          child: const Text('RESET',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 20.0),
-                  RaisedButton(
-                    color: Colors.orange,
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.orange,
+                      onPrimary: Colors.grey,
+                    ),
                     onPressed: model.isStartPressed ? model.startStopWatch : null,
-                    child: const Text('START'),
+                    child: const Text('START',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               );
