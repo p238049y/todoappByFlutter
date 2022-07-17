@@ -33,6 +33,13 @@ class StopWatchModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  stopStopWatch() {
+    isStopPressed = true;
+    isResetPressed = false;
+    stopWatch.stop();
+    notifyListeners();
+  }
+
   resetStopWatch() {
     isResetPressed = true;
     isStartPressed = true;
