@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mytodoapp/module/StopWatch/stopWatchModel.dart';
 import 'package:provider/provider.dart';
 
-// class StopWatchPage extends StatelessWidget {
-//   @override
-//   _StopWatchPage createState() => _StopWatchPage();
-// }
-
 class StopWatchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
