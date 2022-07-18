@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mytodoapp/Views/StopWatch/StopWatchMainPage.dart';
 import 'package:mytodoapp/Views/StopWatch/StopWatchPage.dart';
 import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
 
@@ -57,7 +58,7 @@ class _TodoListPageState extends State<TodoListPage> {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) {
-                    return StopWatchPage();
+                    return StopWatchMainPage();
                   }),
                 );
               },
