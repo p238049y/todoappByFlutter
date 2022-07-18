@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mytodoapp/Views/StopWatch/StopWatchPage.dart';
-import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
+import 'package:mytodoapp/Views/StopWatch/TimerPage.dart';
 
 class StopWatchMainPage extends StatelessWidget {
   final _tab = <Tab> [
@@ -14,14 +14,14 @@ class StopWatchMainPage extends StatelessWidget {
       length: _tab.length,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Tab Page"),
+          title: const Text("時間管理"),
           bottom: TabBar(
             tabs: _tab,
           ),
         ),
         body: TabBarView(
           children: <Widget>[
-            TodoAddPage(),
+            TimerPage(),
             StopWatchPage(),
           ],
         ),

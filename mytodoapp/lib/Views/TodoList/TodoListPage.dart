@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mytodoapp/Views/StopWatch/StopWatchMainPage.dart';
+import 'package:mytodoapp/Views/StopWatch/MainPage.dart';
 import 'package:mytodoapp/Views/StopWatch/StopWatchPage.dart';
 import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
 
