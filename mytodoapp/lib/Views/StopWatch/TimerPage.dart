@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mytodoapp/module/StopWatch/stopWatchModel.dart';
+import 'package:mytodoapp/module/StopWatch/timerModel.dart';
 import 'package:provider/provider.dart';
 
 class TimerPage extends StatelessWidget {
@@ -8,9 +8,9 @@ class TimerPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(30.0),
-        child: ChangeNotifierProvider<StopWatchModel>(
-          create: (_) => StopWatchModel(),  
-          child: Consumer<StopWatchModel>(
+        child: ChangeNotifierProvider<TimerModel>(
+          create: (_) => TimerModel(),  
+          child: Consumer<TimerModel>(
             builder: (context, model, child) {
               return Column(
                 children: [
@@ -18,7 +18,7 @@ class TimerPage extends StatelessWidget {
                   Container(
                     alignment: Alignment.center,
                     child: Text(
-                      model.stopWatchTimeDisplay,
+                      model.timerDisplay,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 50.0,
