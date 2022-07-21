@@ -96,6 +96,34 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                   ),
                 ]
               ),
+            ),
+            Expanded(
+              flex: 3,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.red,
+                      onPrimary: Colors.grey,
+                    ),
+                    onPressed: (){},
+                    child: const Text('START',
+                      style: TextStyle(color: Colors.white, fontSize: 18.0),
+                    ),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.green,
+                      onPrimary: Colors.grey,
+                    ),
+                    onPressed: (){},
+                    child: const Text('STOP',
+                      style: TextStyle(color: Colors.white, fontSize: 18.0),
+                    ),
+                  ),
+                ],
+              ),
             )
           ]),
         // padding: const EdgeInsets.all(30.0),
