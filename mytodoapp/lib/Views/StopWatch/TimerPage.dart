@@ -25,14 +25,22 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
             Expanded(
               flex: 6,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       const Padding(
                         padding: EdgeInsets.only(
                           bottom: 10.0,
                         ),
-                        child: Text("HH"),
+                        child: Text(
+                          "Hour",
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
                       ),
                       NumberPicker(
                         minValue: 0,
@@ -43,12 +51,18 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                     ],
                   ),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       const Padding(
                         padding: EdgeInsets.only(
                           bottom: 10.0,
                         ),
-                        child: Text("mm"),
+                        child: Text("Min",
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
                       ),
                       NumberPicker(
                         minValue: 0,
@@ -59,12 +73,18 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                     ],
                   ),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       const Padding(
                         padding: EdgeInsets.only(
                           bottom: 10.0,
                         ),
-                        child: Text("ss"),
+                        child: Text("Sec",
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
                       ),
                       NumberPicker(
                         minValue: 0,
