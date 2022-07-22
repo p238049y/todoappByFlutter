@@ -3,6 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class TimerModel extends ChangeNotifier {
+  int hour = 0;
+  int min = 0;
+  int sec = 0;
+
   bool isStopPressed = true;
   bool isResetPressed = true;
   bool isStartPressed = true;

@@ -11,9 +11,6 @@ class TimerPage extends StatefulWidget {
 }
 
 class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
-  int hour = 0;
-  int min = 0;
-  int sec = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +37,13 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold
                           ),
-                        ),
-                      ),
-                      NumberPicker(
-                        minValue: 0,
-                        maxValue: 23,
-                        value: hour,
-                        onChanged: (val) => setState(() => hour = val),
+                          NumberPicker(
+                            minValue: 0,
+                            maxValue: 23,
+                            value: model.hour,
+                            onChanged: (val) => setState(() => model.hour = val),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -63,12 +60,20 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                             fontWeight: FontWeight.bold
                           ),
                         ),
+                          NumberPicker(
+                            minValue: 0,
+                            maxValue: 59,
+                            value: model.min,
+                            onChanged: (val) => setState(() => model.min = val),
+                          ),
+                        ],
                       ),
-                      NumberPicker(
-                        minValue: 0,
-                        maxValue: 59,
-                        value: min,
-                        onChanged: (val) => setState(() => min = val),
+                          NumberPicker(
+                            minValue: 0,
+                            maxValue: 59,
+                            value: model.sec,
+                            onChanged: (val) => setState(() => model.sec = val),
+                          ),
                       ),
                     ],
                   ),
