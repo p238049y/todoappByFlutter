@@ -16,26 +16,32 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              flex: 6,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Column(
+        child: ChangeNotifierProvider<TimerModel>(
+        create: (_) => TimerModel(),
+        child: Consumer<TimerModel>(
+          builder: (context, model, child) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  flex: 6,
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      const Padding(
-                        padding: EdgeInsets.only(
-                          bottom: 10.0,
-                        ),
-                        child: Text(
-                          "Hour",
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const Padding(
+                            padding: EdgeInsets.only(
+                              bottom: 10.0,
+                            ),
+                            child: Text(
+                              "Hour",
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold
+                              ),
+                            ),
                           ),
                           NumberPicker(
                             minValue: 0,
@@ -45,21 +51,20 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      const Padding(
-                        padding: EdgeInsets.only(
-                          bottom: 10.0,
-                        ),
-                        child: Text("Min",
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const Padding(
+                            padding: EdgeInsets.only(
+                              bottom: 10.0,
+                            ),
+                            child: Text("Min",
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold
+                              ),
+                            ),
                           ),
-                        ),
                           NumberPicker(
                             minValue: 0,
                             maxValue: 59,
@@ -68,37 +73,64 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                           ),
                         ],
                       ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const Padding(
+                            padding: EdgeInsets.only(
+                              bottom: 10.0,
+                            ),
+                            child: Text("Sec",
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold
+                              ),
+                            ),
+                          ),
                           NumberPicker(
                             minValue: 0,
                             maxValue: 59,
                             value: model.sec,
                             onChanged: (val) => setState(() => model.sec = val),
                           ),
+                        ],
                       ),
-                    ],
+                    ]
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      const Padding(
-                        padding: EdgeInsets.only(
-                          bottom: 10.0,
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.red,
+                          onPrimary: Colors.grey,
                         ),
-                        child: Text("Sec",
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold
-                          ),
+                        onPressed: model.isStartPressed ? null,
+                        child: const Text('START',
+                          style: TextStyle(color: Colors.white, fontSize: 18.0),
                         ),
                       ),
-                      NumberPicker(
-                        minValue: 0,
-                        maxValue: 59,
-                        value: sec,
-                        onChanged: (val) => setState(() => sec = val),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.green,
+                          onPrimary: Colors.grey,
+                        ),
+                        onPressed: model.isStopPressed ? null ,
+                        child: const Text('STOP',
+                          style: TextStyle(color: Colors.white, fontSize: 18.0),
+                        ),
                       ),
                     ],
                   ),
+                )
+              ]);
+            }
+          ),
+        ),
+      )
     );
   }
 }
