@@ -99,6 +99,16 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                   ),
                 ),
                 Expanded(
+                  flex: 1,
+                  child: Text(
+                    model.timeToDisplay,
+                    style: const TextStyle(
+                      fontSize: 35.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                Expanded(
                   flex: 3,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
