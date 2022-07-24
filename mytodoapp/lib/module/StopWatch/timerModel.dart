@@ -39,37 +39,4 @@ class TimerModel extends ChangeNotifier {
     // timerDisplay = ()
     // Timer(duration, keepRunning);
   }
-
-  // keepRunning () {
-  //   if (stopWatch.isRunning) {
-  //     startTimer();
-  //   }
-
-  //   timerDisplay = '${stopWatch.elapsed.inHours.toString().padLeft(2, '0')}:${(stopWatch.elapsed.inMinutes%60).toString().padLeft(2,"0")}:${(stopWatch.elapsed.inSeconds%60).toString().padLeft(2,"0")}';
-
-  //   notifyListeners();
-  // }
-
-  // startStopWatch() {
-  //   isStopPressed = false;
-  //   isStartPressed = true;
-  //   stopWatch.start();
-  //   startTimer();
-  //   notifyListeners();
-  // }
-
-  // stopStopWatch() {
-  //   isStopPressed = true;
-  //   // isResetPressed = false;
-  //   stopWatch.stop();
-  //   notifyListeners();
-  // }
-
-  // resetStopWatch() {
-  //   // isResetPressed = true;
-  //   isStartPressed = true;
-  //   stopWatch.reset();
-  //   timerDisplay = '99:99:99';
-  //   notifyListeners();
-  // }
 }
