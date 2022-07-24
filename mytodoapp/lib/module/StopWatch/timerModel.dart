@@ -11,13 +11,28 @@ class TimerModel extends ChangeNotifier {
   bool isStartPressed = true;
 
 
-  int timerDisplay = 0;
-  // var stopWatch = Stopwatch();
-  // final duration = const Duration(seconds: 1);
+  int time = 0;
+  String timeToDisplay = "";
+  final duration = const Duration(seconds: 1);
 
   startTimer () {
-    // timerDisplay = ()
-    // Timer(duration, keepRunning);
+    isStartPressed = false;
+    isStopPressed = true;
+
+    time = (hour * 60 * 60) + (min * 60) + sec;
+    Timer.periodic(duration, (Timer t) { 
+      if(time < 1) {
+        t.cancel();
+        timeToDisplay = "";
+        isStopPressed = false;
+        isStartPressed = true;
+      } else {
+        time = time -1;
+      }
+      timeToDisplay = time.toString();
+
+      notifyListeners();
+    });
   }
 
   stopTimer () {
