@@ -28,7 +28,20 @@ class TimerModel extends ChangeNotifier {
         isStopPressed = false;
         isStartPressed = true;
         checkTimer = true;
-      } else {
+      } else if (time < 60) {
+        timeToDisplay = time.toString();
+        time = time -1;
+      } else if (time < 3600) {
+        int m = (time / 60) as int;
+        int s = time - (60 * m);
+        timeToDisplay = '$m:$s';
+        time = time -1;
+      }else {
+        int h = (time / 3600) as int;
+        int t = time - (3600 * h);
+        int m = (t / 60) as int;
+        int s = t - (60 * m);
+        timeToDisplay = '$h:$m:$s';
         time = time -1;
       }
       timeToDisplay = time.toString();
