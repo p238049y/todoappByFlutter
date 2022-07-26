@@ -53,5 +53,6 @@ class TimerModel extends ChangeNotifier {
   stopTimer () {
     isStartPressed = true;
     isStopPressed = false;
+    checkTimer = false;
   }
 }
