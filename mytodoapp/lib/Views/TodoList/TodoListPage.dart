@@ -35,6 +35,7 @@ class _TodoListPageState extends State<TodoListPage> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           FloatingActionButton(
+            heroTag: 'todoAdd',
             backgroundColor: Colors.blue,
             onPressed: () async {
               final newListText = await Navigator.of(context).push(
@@ -53,6 +54,7 @@ class _TodoListPageState extends State<TodoListPage> {
           Container( // 余白のためContainerでラップ
             margin: const EdgeInsets.only(bottom: 16.0), 
             child: FloatingActionButton(
+              heroTag: 'timerAndStopWatch',
               backgroundColor: Colors.orange,
               child: const Icon(Icons.timer),
               onPressed: () {
