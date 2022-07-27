@@ -32,14 +32,14 @@ class TimerModel extends ChangeNotifier {
         timeToDisplay = time.toString();
         time = time -1;
       } else if (time < 3600) {
-        int m = (time / 60) as int;
+        int m = (time ~/ 60);
         int s = time - (60 * m);
         timeToDisplay = '$m:$s';
         time = time -1;
       }else {
-        int h = (time / 3600) as int;
+        int h = (time ~/ 3600);
         int t = time - (3600 * h);
-        int m = (t / 60) as int;
+        int m = (t ~/ 60);
         int s = t - (60 * m);
         timeToDisplay = '$h:$m:$s';
         time = time -1;
