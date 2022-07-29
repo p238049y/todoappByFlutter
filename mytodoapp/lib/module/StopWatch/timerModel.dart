@@ -44,8 +44,6 @@ class TimerModel extends ChangeNotifier {
         timeToDisplay = '$h:$m:$s';
         time = time -1;
       }
-      timeToDisplay = time.toString();
-
       notifyListeners();
     });
   }
