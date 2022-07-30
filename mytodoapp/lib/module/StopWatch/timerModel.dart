@@ -24,12 +24,14 @@ class TimerModel extends ChangeNotifier {
     Timer.periodic(duration, (Timer t) { 
       if(time < 1 || checkTimer == false) {
         t.cancel();
-        timeToDisplay = "";
+        timeToDisplay = 'Finish!!!';
         isStopPressed = false;
         isStartPressed = true;
         checkTimer = true;
       } else if (time < 60) {
-        timeToDisplay = time.toString();
+        int h = 0;
+        int m = 0;
+        timeToDisplay = '${h.toString().padLeft(2, '0')}:${m.toString().padLeft(2, '0')}:${time.toString().padLeft(2, '0')}';
         time = time -1;
       } else if (time < 3600) {
         int m = (time ~/ 60);
@@ -56,18 +58,26 @@ class TimerModel extends ChangeNotifier {
 
   changeHourVal(val){
     hour = val;
+    if (timeToDisplay == 'Finish!!!') {
+      timeToDisplay = '';
+    }
     notifyListeners();
   }
 
 
   changeMinuteVal(val){
     min = val;
+    if (timeToDisplay == 'Finish!!!') {
+      timeToDisplay = '';
+    }
     notifyListeners();
   }
 
   changeSecondVal(val){
     sec = val;
+    if (timeToDisplay == 'Finish!!!') {
+      timeToDisplay = '';
+    }
     notifyListeners();
   }
-
 }
