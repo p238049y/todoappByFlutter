@@ -9,7 +9,7 @@ class TimerModel extends ChangeNotifier {
 
   bool isStopPressed = true;
   bool isStartPressed = true;
-  bool checkTimer = false;
+  bool checkTimer = true;
 
 
   int time = 0;
@@ -34,14 +34,14 @@ class TimerModel extends ChangeNotifier {
       } else if (time < 3600) {
         int m = (time ~/ 60);
         int s = time - (60 * m);
-        timeToDisplay = '$m:$s';
+        timeToDisplay = '${m.toString().padLeft(2, '0')}:${s.toString().padLeft(2, '0')}';
         time = time -1;
       }else {
         int h = (time ~/ 3600);
         int t = time - (3600 * h);
         int m = (t ~/ 60);
         int s = t - (60 * m);
-        timeToDisplay = '$h:$m:$s';
+        timeToDisplay = '${h.toString().padLeft(2, '0')}:${m.toString().padLeft(2, '0')}:${s.toString().padLeft(2, '0')}';
         time = time -1;
       }
       notifyListeners();
