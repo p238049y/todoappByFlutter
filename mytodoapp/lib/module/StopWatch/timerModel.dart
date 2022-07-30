@@ -53,4 +53,21 @@ class TimerModel extends ChangeNotifier {
     isStopPressed = false;
     checkTimer = false;
   }
+
+  changeHourVal(val){
+    hour = val;
+    notifyListeners();
+  }
+
+
+  changeMinuteVal(val){
+    min = val;
+    notifyListeners();
+  }
+
+  changeSecondVal(val){
+    sec = val;
+    notifyListeners();
+  }
+
 }
