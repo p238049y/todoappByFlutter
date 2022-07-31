@@ -25,15 +25,21 @@ class _TodoAddPageState extends State<TodoAddPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('リスト追加'),
+        title: const Text('タスク追加'),
       ),
       body: Container(
-        padding: const EdgeInsets.all(64),
+        padding: const EdgeInsets.all(50),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const Text('今からやること', textAlign: TextAlign.left),
             TextFormField(
+              decoration: const InputDecoration(
+                labelText: 'やること',
+                labelStyle: TextStyle(
+                  fontSize: 20,
+                ),
+                border: OutlineInputBorder()
+              ),
               onChanged: (String value) {
                 setState(() {
                   displayData.text = value;
@@ -88,13 +94,14 @@ class _TodoAddPageState extends State<TodoAddPage> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
+                  displayData.dateTime = DateTime.now();
                   if (displayData.text.isEmpty) {
                     return;
                   } else {
                     Navigator.of(context).pop(displayData);
                   }
                 },
-                child: const Text('リスト追加', style: TextStyle(color: Colors.white)),
+                child: const Text('時間計測へ', style: TextStyle(color: Colors.white)),
               ),
             ),
           ]
