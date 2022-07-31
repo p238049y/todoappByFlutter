@@ -25,7 +25,7 @@ class _TodoListPageState extends State<TodoListPage> {
             return Card(
               child: ListTile(
                 title: Text(todoList[index].text),
-                subtitle: Text(DateFormat('HH:mm:ss').format(todoList[index].dateTime)),
+                subtitle: Text(DateFormat('yyyy/MM/dd HH:mm:ss').format(todoList[index].dateTime)),
               ),
             );
           }
