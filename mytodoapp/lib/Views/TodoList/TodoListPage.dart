@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:mytodoapp/Views/StopWatch/StopWatchMainPage.dart';
 import 'package:mytodoapp/Views/StopWatch/StopWatchPage.dart';
 import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
+import 'package:mytodoapp/Views/TodoList/TodoDetailPage.dart';
 
 // リスト一覧画面用Widget
 class TodoListPage extends StatefulWidget {
@@ -26,9 +27,16 @@ class _TodoListPageState extends State<TodoListPage> {
               child: ListTile(
                 title: Text(todoList[index].text),
                 subtitle: Text(DateFormat('yyyy/MM/dd HH:mm:ss').format(todoList[index].dateTime)),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) {
+                      return TodoDetailPage();
+                    }),
+                  );
+                }
               ),
             );
-          }
+          },
         ),
       floatingActionButton: Column(
         verticalDirection: VerticalDirection.up, // childrenの先頭を下に配置
