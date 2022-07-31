@@ -9,12 +9,14 @@ class TodoAddPage extends StatefulWidget {
 }
 class DisplayData {
   String text = '';
+  String detailInformation = '';
   DateTime dateTime = DateTime.utc(0, 0, 0);
 }
 
 class _TodoAddPageState extends State<TodoAddPage> {
   // 入力されたテキストをデータとして持つ
   String _text = '';
+  String _detailInformation = '';
   DateTime? _datetime;
 
   DisplayData displayData = DisplayData();
