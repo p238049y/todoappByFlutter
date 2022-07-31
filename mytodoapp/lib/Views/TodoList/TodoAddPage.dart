@@ -9,12 +9,14 @@ class TodoAddPage extends StatefulWidget {
 }
 class DisplayData {
   String text = '';
+  String detailInformation = '';
   DateTime dateTime = DateTime.utc(0, 0, 0);
 }
 
 class _TodoAddPageState extends State<TodoAddPage> {
   // 入力されたテキストをデータとして持つ
   String _text = '';
+  String _detailInformation = '';
   DateTime? _datetime;
 
   DisplayData displayData = DisplayData();
@@ -23,15 +25,21 @@ class _TodoAddPageState extends State<TodoAddPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('リスト追加'),
+        title: const Text('タスク追加'),
       ),
       body: Container(
-        padding: const EdgeInsets.all(64),
+        padding: const EdgeInsets.all(50),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const Text('今からやること', textAlign: TextAlign.left),
             TextFormField(
+              decoration: const InputDecoration(
+                labelText: 'やること',
+                labelStyle: TextStyle(
+                  fontSize: 20,
+                ),
+                border: OutlineInputBorder()
+              ),
               onChanged: (String value) {
                 setState(() {
                   displayData.text = value;
@@ -53,35 +61,47 @@ class _TodoAddPageState extends State<TodoAddPage> {
                 return null;
               }
             ),
-            Text(
-              DateFormat.Hms().format(displayData.dateTime),
-              style: Theme.of(context).textTheme.headline2,
-            ),
-            TextButton(
-              child: const Text('時間入力', style: TextStyle(decoration: TextDecoration.underline)), 
-              onPressed: () async {
-                Picker(
-                  adapter: DateTimePickerAdapter(type: PickerDateTimeType.kHMS, value: _datetime, customColumnType: [3, 4, 5]),
-                  title: const Text('Select Time'),
-                  onConfirm: (Picker picker, List value) {
-                    setState(()  => {
-                      displayData.dateTime = DateTime.utc(0, 0, 0, value[0], value[1], value[2])
-                    });
-                  }
-                ).showModal(context);
+            const SizedBox(height: 24),
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: '詳細内容', 
+                labelStyle: TextStyle(
+                  fontSize: 20,
+                ),
+                border: OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.multiline,
+              maxLines: 20,
+              onChanged: (String value) {
+                setState(() {
+                  displayData.detailInformation = value;
+                });
               },
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (value) {
+                if (value!.contains(' ') && value.trim() == '') {
+                  return '空文字は受け付けていません。';
+                }
+
+                if (value.contains('　') && value.trim() == '') {
+                  return '空文字は受け付けていません。';
+                }
+                return null;
+              }
             ),
+            const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
+                  displayData.dateTime = DateTime.now();
                   if (displayData.text.isEmpty) {
                     return;
                   } else {
                     Navigator.of(context).pop(displayData);
                   }
                 },
-                child: const Text('リスト追加', style: TextStyle(color: Colors.white)),
+                child: const Text('時間計測へ', style: TextStyle(color: Colors.white)),
               ),
             ),
           ]

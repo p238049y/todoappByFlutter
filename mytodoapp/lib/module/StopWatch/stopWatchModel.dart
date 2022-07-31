@@ -13,6 +13,7 @@ class StopWatchModel extends ChangeNotifier {
 
   startTimer () {
     Timer(duration, keepRunning);
+    isStartPressed = false;
   }
 
   keepRunning () {
