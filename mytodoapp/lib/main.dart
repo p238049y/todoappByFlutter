@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
+import 'package:mytodoapp/Views/TodoList/TodoDetailPage.dart';
 import 'package:mytodoapp/Views/TodoList/TodoListPage.dart';
 
 
@@ -17,7 +19,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TodoListPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => TodoListPage(),
+        '/todoAdd': (context) => TodoAddPage(),
+        '/todoDetail': (context) => TodoDetailPage(),
+      },
     );
   }
 }
