@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
-import 'package:mytodoapp/Views/TodoList/TodoDetailPage.dart';
 import 'package:mytodoapp/Views/TodoList/TodoListPage.dart';
 
 
@@ -11,7 +9,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,12 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => TodoListPage(),
-        '/todoAdd': (context) => TodoAddPage(),
-        '/todoDetail': (context) => TodoDetailPage(),
-      },
+      home: TodoListPage(),
     );
   }
 }
