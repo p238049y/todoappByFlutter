@@ -3,11 +3,17 @@ import 'package:intl/intl.dart';
 import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
 
 class TodoDetailPage extends StatefulWidget {
+  TodoDetailPage(this.displayData);
+  final DisplayData displayData;
+
   @override
-  _TodoDetailPage createState() => _TodoDetailPage();
+  _TodoDetailPage createState() => _TodoDetailPage(displayData);
 }
 
 class _TodoDetailPage extends State<TodoDetailPage> {
+  _TodoDetailPage(this.displayData);
+  final DisplayData displayData;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +43,7 @@ class _TodoDetailPage extends State<TodoDetailPage> {
                            flex: 4,
                           child: Container(
                             padding: const EdgeInsets.all(8.0),
-                            child: const Text('やること', style: TextStyle(fontSize: 18.0),),
+                            child: Text(displayData.text, style: const TextStyle(fontSize: 18.0)),
                           )
                         ),
                       ],
@@ -55,7 +61,7 @@ class _TodoDetailPage extends State<TodoDetailPage> {
                            flex: 4,
                           child: Container(
                             padding: const EdgeInsets.all(8.0),
-                            child: const Text('実施日', style: TextStyle(fontSize: 18.0),),
+                            child: Text(DateFormat('yyyy/MM/dd').format(displayData.dateTime), style: const TextStyle(fontSize: 18.0),),
                           )
                         ),
                       ],
@@ -73,7 +79,7 @@ class _TodoDetailPage extends State<TodoDetailPage> {
                            flex: 4,
                           child: Container(
                             padding: const EdgeInsets.all(8.0),
-                            child: const Text('詳細内容', style: TextStyle(fontSize: 18.0),),
+                            child: Text(displayData.detailInformation, style: const TextStyle(fontSize: 18.0),),
                           )
                         ),
                       ],
