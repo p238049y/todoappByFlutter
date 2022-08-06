@@ -82,23 +82,59 @@ class _TodoAddPageState extends State<TodoAddPage> {
                       return '空文字は受け付けていません。';
                     }
 
-            const SizedBox(height: 24),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  displayData.dateTime = DateTime.now();
-                  if (displayData.text.isEmpty) {
-                    return;
-                  } else {
-                    Navigator.of(context).pop(displayData);
-                  }
-                },
-                child: const Text('時間計測へ', style: TextStyle(color: Colors.white)),
+                    if (value.contains('　') && value.trim() == '') {
+                      return '空文字は受け付けていません。';
+                    }
+                    return null;
+                  }),
+              const SizedBox(height: 24),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8, right: 4),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.red,
+                        onPrimary: Colors.grey,
+                      ),
+                      onPressed: () {
+                        displayData.dateTime = DateTime.now();
+                        if (displayData.text.isEmpty) {
+                          return;
+                        } else {
+                          Navigator.of(context).pop(displayData);
+                        }
+                      },
+                      child: const Text(
+                        'リストへ追加',
+                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4, right: 8),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.green,
+                        onPrimary: Colors.grey,
+                      ),
+                      onPressed: () {
+                        displayData.dateTime = DateTime.now();
+                        if (displayData.text.isEmpty) {
+                          return;
+                        } else {
+                          Navigator.of(context).pop(displayData);
+                        }
+                      },
+                      child: const Text(
+                        '時間計測へ',
+                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ]
-        ),
+            ]),
       ),
     );
   }
