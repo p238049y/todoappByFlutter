@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_picker/flutter_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:mytodoapp/Views/StopWatch/StopWatchMainPage.dart';
 
 class TodoAddPage extends StatefulWidget {
   @override
@@ -123,7 +124,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
                         if (displayData.text.isEmpty) {
                           return;
                         } else {
-                          Navigator.of(context).pop(displayData);
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => StopWatchMainPage()));
                         }
                       },
                       child: const Text(
