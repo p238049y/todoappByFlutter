@@ -21,23 +21,22 @@ class _TodoListPageState extends State<TodoListPage> {
         title: const Text('リスト一覧'),
       ),
       body: ListView.builder(
-          itemCount: todoList.length,
-          itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
+        itemCount: todoList.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
                 title: Text(todoList[index].text),
-                subtitle: Text(DateFormat('yyyy/MM/dd HH:mm:ss').format(todoList[index].dateTime)),
+                subtitle: Text(DateFormat('yyyy/MM/dd HH:mm:ss')
+                    .format(todoList[index].dateTime)),
                 onTap: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      return TodoDetailPage();
-                    }),
+                    MaterialPageRoute(
+                        builder: (context) => TodoDetailPage(todoList[index])),
                   );
-                }
-              ),
-            );
-          },
-        ),
+                }),
+          );
+        },
+      ),
       floatingActionButton: Column(
         verticalDirection: VerticalDirection.up, // childrenの先頭を下に配置
         mainAxisSize: MainAxisSize.min,
@@ -59,8 +58,9 @@ class _TodoListPageState extends State<TodoListPage> {
             },
             child: const Icon(Icons.add),
           ),
-          Container( // 余白のためContainerでラップ
-            margin: const EdgeInsets.only(bottom: 16.0), 
+          Container(
+            // 余白のためContainerでラップ
+            margin: const EdgeInsets.only(bottom: 16.0),
             child: FloatingActionButton(
               heroTag: 'timerAndStopWatch',
               backgroundColor: Colors.orange,
