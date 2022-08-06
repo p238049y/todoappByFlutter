@@ -11,17 +11,18 @@ class StopWatchModel extends ChangeNotifier {
   var stopWatch = Stopwatch();
   final duration = const Duration(seconds: 1);
 
-  startTimer () {
+  startTimer() {
     Timer(duration, keepRunning);
     isStartPressed = false;
   }
 
-  keepRunning () {
+  keepRunning() {
     if (stopWatch.isRunning) {
       startTimer();
     }
 
-    stopWatchTimeDisplay = '${stopWatch.elapsed.inHours.toString().padLeft(2, '0')}:${(stopWatch.elapsed.inMinutes%60).toString().padLeft(2,"0")}:${(stopWatch.elapsed.inSeconds%60).toString().padLeft(2,"0")}';
+    stopWatchTimeDisplay =
+        '${stopWatch.elapsed.inHours.toString().padLeft(2, '0')}:${(stopWatch.elapsed.inMinutes % 60).toString().padLeft(2, "0")}:${(stopWatch.elapsed.inSeconds % 60).toString().padLeft(2, "0")}';
 
     notifyListeners();
   }

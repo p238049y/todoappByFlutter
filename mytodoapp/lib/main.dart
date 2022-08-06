@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mytodoapp/Views/TodoList/TodoListPage.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
