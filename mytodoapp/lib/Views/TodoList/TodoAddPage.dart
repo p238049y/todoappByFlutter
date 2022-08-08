@@ -124,7 +124,10 @@ class _TodoAddPageState extends State<TodoAddPage> {
                         if (displayData.text.isEmpty) {
                           return;
                         } else {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => StopWatchMainPage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => StopWatchMainPage()));
                         }
                       },
                       child: const Text(

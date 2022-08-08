@@ -9,9 +9,8 @@ class StopWatchPage extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.all(30.0),
         child: ChangeNotifierProvider<StopWatchModel>(
-          create: (_) => StopWatchModel(),
-          child: Consumer<StopWatchModel>(
-            builder: (context, model, child) {
+            create: (_) => StopWatchModel(),
+            child: Consumer<StopWatchModel>(builder: (context, model, child) {
               return Column(
                 children: [
                   const SizedBox(height: 100.0),
@@ -35,9 +34,12 @@ class StopWatchPage extends StatelessWidget {
                             primary: Colors.red,
                             onPrimary: Colors.grey,
                           ),
-                          onPressed: model.isStopPressed ? null : model.stopStopWatch,
-                          child: const Text('STOP',
-                            style: TextStyle(color: Colors.white, fontSize: 18.0),
+                          onPressed:
+                              model.isStopPressed ? null : model.stopStopWatch,
+                          child: const Text(
+                            'STOP',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 18.0),
                           ),
                         ),
                       ),
@@ -48,9 +50,13 @@ class StopWatchPage extends StatelessWidget {
                             primary: Colors.green,
                             onPrimary: Colors.grey,
                           ),
-                          onPressed: model.isResetPressed ? null : model.resetStopWatch,
-                          child: const Text('RESET',
-                            style: TextStyle(color: Colors.white, fontSize: 18.0),
+                          onPressed: model.isResetPressed
+                              ? null
+                              : model.resetStopWatch,
+                          child: const Text(
+                            'RESET',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 18.0),
                           ),
                         ),
                       ),
@@ -62,16 +68,16 @@ class StopWatchPage extends StatelessWidget {
                       primary: Colors.orange,
                       onPrimary: Colors.grey,
                     ),
-                    onPressed: model.isStartPressed ? model.startStopWatch : null,
-                    child: const Text('START',
+                    onPressed:
+                        model.isStartPressed ? model.startStopWatch : null,
+                    child: const Text(
+                      'START',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
                     ),
                   ),
                 ],
               );
-            }
-          )
-        ),
+            })),
       ),
     );
   }

@@ -11,92 +11,88 @@ class TimerPage extends StatefulWidget {
 }
 
 class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: ChangeNotifierProvider<TimerModel>(
+        body: Container(
+      child: ChangeNotifierProvider<TimerModel>(
         create: (_) => TimerModel(),
-        child: Consumer<TimerModel>(
-          builder: (context, model, child) {
-            return Column(
+        child: Consumer<TimerModel>(builder: (context, model, child) {
+          return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Expanded(
                   flex: 6,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          const Padding(
-                            padding: EdgeInsets.only(
-                              bottom: 10.0,
-                            ),
-                            child: Text(
-                              "Hour",
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 10.0,
+                              ),
+                              child: Text(
+                                "Hour",
+                                style: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
-                          ),
-                          NumberPicker(
-                            minValue: 0,
-                            maxValue: 23,
-                            value: model.hour,
-                            onChanged: (val) => model.changeHourVal(val),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          const Padding(
-                            padding: EdgeInsets.only(
-                              bottom: 10.0,
+                            NumberPicker(
+                              minValue: 0,
+                              maxValue: 23,
+                              value: model.hour,
+                              onChanged: (val) => model.changeHourVal(val),
                             ),
-                            child: Text("Min",
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 10.0,
+                              ),
+                              child: Text(
+                                "Min",
+                                style: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
-                          ),
-                          NumberPicker(
-                            minValue: 0,
-                            maxValue: 59,
-                            value: model.min,
-                            onChanged: (val) => model.changeMinuteVal(val),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          const Padding(
-                            padding: EdgeInsets.only(
-                              bottom: 10.0,
+                            NumberPicker(
+                              minValue: 0,
+                              maxValue: 59,
+                              value: model.min,
+                              onChanged: (val) => model.changeMinuteVal(val),
                             ),
-                            child: Text("Sec",
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 10.0,
+                              ),
+                              child: Text(
+                                "Sec",
+                                style: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
-                          ),
-                          NumberPicker(
-                            minValue: 0,
-                            maxValue: 59,
-                            value: model.sec,
-                            onChanged: (val) => model.changeSecondVal(val),
-                          ),
-                        ],
-                      ),
-                    ]
-                  ),
+                            NumberPicker(
+                              minValue: 0,
+                              maxValue: 59,
+                              value: model.sec,
+                              onChanged: (val) => model.changeSecondVal(val),
+                            ),
+                          ],
+                        ),
+                      ]),
                 ),
                 Expanded(
                   flex: 1,
@@ -118,8 +114,10 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                           primary: Colors.orange,
                           onPrimary: Colors.grey,
                         ),
-                        onPressed: model.isStartPressed ? model.startTimer : null,
-                        child: const Text('START',
+                        onPressed:
+                            model.isStartPressed ? model.startTimer : null,
+                        child: const Text(
+                          'START',
                           style: TextStyle(color: Colors.white, fontSize: 18.0),
                         ),
                       ),
@@ -128,8 +126,9 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                           primary: Colors.green,
                           onPrimary: Colors.grey,
                         ),
-                        onPressed: model.isStopPressed ? model.stopTimer : null ,
-                        child: const Text('STOP',
+                        onPressed: model.isStopPressed ? model.stopTimer : null,
+                        child: const Text(
+                          'STOP',
                           style: TextStyle(color: Colors.white, fontSize: 18.0),
                         ),
                       ),
@@ -137,10 +136,8 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                   ),
                 )
               ]);
-            }
-          ),
-        ),
-      )
-    );
+        }),
+      ),
+    ));
   }
 }

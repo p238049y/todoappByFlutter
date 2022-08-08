@@ -40,12 +40,12 @@ class _TodoDetailPage extends State<TodoDetailPage> {
                           ),
                         ),
                         Expanded(
-                           flex: 4,
-                          child: Container(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(displayData.text, style: const TextStyle(fontSize: 18.0)),
-                          )
-                        ),
+                            flex: 4,
+                            child: Container(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(displayData.text,
+                                  style: const TextStyle(fontSize: 18.0)),
+                            )),
                       ],
                     ),
                     Row(
@@ -58,12 +58,15 @@ class _TodoDetailPage extends State<TodoDetailPage> {
                           ),
                         ),
                         Expanded(
-                           flex: 4,
-                          child: Container(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(DateFormat('yyyy/MM/dd').format(displayData.dateTime), style: const TextStyle(fontSize: 18.0),),
-                          )
-                        ),
+                            flex: 4,
+                            child: Container(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                DateFormat('yyyy/MM/dd')
+                                    .format(displayData.dateTime),
+                                style: const TextStyle(fontSize: 18.0),
+                              ),
+                            )),
                       ],
                     ),
                     Row(
@@ -76,12 +79,14 @@ class _TodoDetailPage extends State<TodoDetailPage> {
                           ),
                         ),
                         Expanded(
-                           flex: 4,
-                          child: Container(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(displayData.detailInformation, style: const TextStyle(fontSize: 18.0),),
-                          )
-                        ),
+                            flex: 4,
+                            child: Container(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                displayData.detailInformation,
+                                style: const TextStyle(fontSize: 18.0),
+                              ),
+                            )),
                       ],
                     ),
                     Row(
@@ -94,12 +99,14 @@ class _TodoDetailPage extends State<TodoDetailPage> {
                           ),
                         ),
                         Expanded(
-                           flex: 4,
-                          child: Container(
-                            padding: const EdgeInsets.all(8.0),
-                            child: const Text('目標時間', style: TextStyle(fontSize: 18.0),),
-                          )
-                        ),
+                            flex: 4,
+                            child: Container(
+                              padding: const EdgeInsets.all(8.0),
+                              child: const Text(
+                                '目標時間',
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                            )),
                       ],
                     ),
                     Row(
@@ -112,12 +119,14 @@ class _TodoDetailPage extends State<TodoDetailPage> {
                           ),
                         ),
                         Expanded(
-                           flex: 4,
-                          child: Container(
-                            padding: const EdgeInsets.all(8.0),
-                            child: const Text('経過時間', style: TextStyle(fontSize: 18.0),),
-                          )
-                        ),
+                            flex: 4,
+                            child: Container(
+                              padding: const EdgeInsets.all(8.0),
+                              child: const Text(
+                                '経過時間',
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                            )),
                       ],
                     )
                   ],
