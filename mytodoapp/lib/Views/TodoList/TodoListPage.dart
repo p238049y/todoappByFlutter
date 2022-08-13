@@ -58,22 +58,6 @@ class _TodoListPageState extends State<TodoListPage> {
             },
             child: const Icon(Icons.add),
           ),
-          Container(
-            // 余白のためContainerでラップ
-            margin: const EdgeInsets.only(bottom: 16.0),
-            child: FloatingActionButton(
-              heroTag: 'timerAndStopWatch',
-              backgroundColor: Colors.orange,
-              child: const Icon(Icons.timer),
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) {
-                    return StopWatchMainPage();
-                  }),
-                );
-              },
-            ),
-          ),
         ],
       ),
     );
