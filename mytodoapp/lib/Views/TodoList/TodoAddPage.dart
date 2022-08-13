@@ -127,7 +127,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => StopWatchMainPage()));
+                                  builder: (context) => StopWatchMainPage(displayData: displayData)));
                         }
                       },
                       child: const Text(
