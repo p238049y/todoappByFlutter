@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
 import 'package:mytodoapp/module/StopWatch/timerModel.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:provider/provider.dart';
 
 class TimerPage extends StatefulWidget {
-  const TimerPage({Key? key}) : super(key: key);
+  final DisplayData displayData;
+  const TimerPage({Key? key, required this.displayData}) : super(key: key);
 
   @override
   _TimerPage createState() => _TimerPage();
 }
 
 class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
+  late DisplayData displayData;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // 受け取ったデータを状態を管理する変数に格納
+    displayData = widget.displayData;
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
