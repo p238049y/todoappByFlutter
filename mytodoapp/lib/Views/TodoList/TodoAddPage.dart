@@ -13,6 +13,8 @@ class DisplayData {
   String text = '';
   String detailInformation = '';
   DateTime dateTime = DateTime.utc(0, 0, 0);
+  String elapsedTime = '';
+  String targetTime = '';
 }
 
 class _TodoAddPageState extends State<TodoAddPage> {
