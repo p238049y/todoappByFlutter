@@ -33,7 +33,13 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(displayData.text),
+              const SizedBox(height: 50.0),
+              Text(
+                displayData.text,
+                style: const TextStyle(
+                  fontSize: 36.0,
+                  fontWeight: FontWeight.bold),
+                  ),
               Expanded(
                 flex: 6,
                 child: Row(
