@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
 import 'package:mytodoapp/module/StopWatch/stopWatchModel.dart';
 import 'package:provider/provider.dart';
 
 class StopWatchPage extends StatelessWidget {
+  final DisplayData displayData;
+
+  const StopWatchPage({super.key, required this.displayData});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +18,13 @@ class StopWatchPage extends StatelessWidget {
             child: Consumer<StopWatchModel>(builder: (context, model, child) {
               return Column(
                 children: [
-                  const SizedBox(height: 100.0),
+                  const SizedBox(height: 20.0),
+                  Text(
+                    displayData.text,
+                    style: const TextStyle(
+                        fontSize: 36.0, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 50.0),
                   Container(
                     alignment: Alignment.center,
                     child: Text(

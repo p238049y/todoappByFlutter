@@ -26,7 +26,7 @@ class StopWatchMainPage extends StatelessWidget {
           body: TabBarView(
             children: <Widget>[
               TimerPage(displayData: displayData),
-              StopWatchPage(),
+              StopWatchPage(displayData: displayData),
             ],
           ),
         ));
