@@ -13,6 +13,8 @@ class DisplayData {
   String text = '';
   String detailInformation = '';
   DateTime dateTime = DateTime.utc(0, 0, 0);
+  String elapsedTime = '';
+  String targetTime = '';
 }
 
 class _TodoAddPageState extends State<TodoAddPage> {
@@ -124,7 +126,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
                         if (displayData.text.isEmpty) {
                           return;
                         } else {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => StopWatchMainPage(displayData: displayData)));
