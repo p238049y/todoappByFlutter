@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
+import 'package:mytodoapp/Views/TodoList/TodoListPage.dart';
 import 'package:mytodoapp/module/StopWatch/timerModel.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:provider/provider.dart';
@@ -148,6 +149,20 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                       onPressed: model.isStopPressed ? model.stopTimer : null,
                       child: const Text(
                         'STOP',
+                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        onPrimary: Colors.grey,
+                      ),
+                      onPressed: () {
+                        displayData.targetTime = model.initialSettingTime;
+                        Navigator.of(context).pop(displayData);
+                      },
+                      child: const Text(
+                        'ADD',
                         style: TextStyle(color: Colors.white, fontSize: 18.0),
                       ),
                     ),
