@@ -126,7 +126,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
                         if (displayData.text.isEmpty) {
                           return;
                         } else {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => StopWatchMainPage(displayData: displayData)));
