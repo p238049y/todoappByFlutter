@@ -1,3 +1,4 @@
+import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
@@ -8,7 +9,7 @@ class DbProvider {
 
   static Future<void> _createTable(Database db, int version) async {
     await db.execute(
-      'CREATE TABLE $tableName(id INTEGER PRIMARY KEY AUTOINCREMENT, detail_information TEXT, elapsed_time TEXT, target_time TEXT , created_at Text)'
+      'CREATE TABLE $tableName(id INTEGER PRIMARY KEY AUTOINCREMENT, todo_title TEXT, detail_information TEXT, elapsed_time TEXT, target_time TEXT , created_at Text);'
     );
   }
 
@@ -24,5 +25,15 @@ class DbProvider {
     } else {
       return database;
     }
+  }
+
+  static Future<void> insertData(DisplayData displayData) async {
+    await database!.insert(tableName, {
+      'todo_title': displayData.text,
+      'detail_information': displayData.detailInformation,
+      'elapsed_time': displayData.elapsedTime,
+      'target_time':displayData.targetTime,
+      'created_at': displayData.dateTime.toString()
+    });
   }
 }

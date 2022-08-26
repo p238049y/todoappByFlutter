@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mytodoapp/DB/sqflite.dart';
 import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
 import 'package:mytodoapp/Views/TodoList/TodoListPage.dart';
 import 'package:mytodoapp/module/StopWatch/timerModel.dart';
@@ -16,10 +17,17 @@ class TimerPage extends StatefulWidget {
 class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
   late DisplayData displayData;
 
+  Future<void> initDb() async {
+    await DbProvider.setDb();
+    setState(() {
+      
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-
+    initDb();
     // 受け取ったデータを状態を管理する変数に格納
     displayData = widget.displayData;
   }
@@ -157,8 +165,9 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                         primary: Colors.blue,
                         onPrimary: Colors.grey,
                       ),
-                      onPressed: () {
+                      onPressed: () async {
                         displayData.targetTime = model.initialSettingTime;
+                        await DbProvider.insertData(displayData);
                         Navigator.of(context).pop(displayData);
                       },
                       child: const Text(
