@@ -36,4 +36,23 @@ class DbProvider {
       'created_at': displayData.dateTime.toString()
     });
   }
+
+  static Future<List<DisplayData>> getDisplayData() async {
+    final List<Map<String, dynamic>> maps = await database!.query(tableName);
+    print(maps);
+
+    if (maps.isEmpty) {
+      return [];
+    } else {
+      List<DisplayData> displayDataList = List.generate(maps.length, (index) => DisplayData(
+        id: maps[index]['id'],
+        text: maps[index]['todo_title'],
+        detailInformation: maps[index]['detail_information'],
+        elapsedTime: maps[index]['elapsed_time'],
+        targetTime: maps[index]['target_time'], 
+        dateTime: DateTime.parse(maps[index]['created_at']),
+      ));
+      return displayDataList;
+    }
+  }
 }

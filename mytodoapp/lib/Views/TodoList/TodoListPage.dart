@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mytodoapp/DB/sqflite.dart';
 import 'package:mytodoapp/Views/StopWatch/StopWatchMainPage.dart';
 import 'package:mytodoapp/Views/StopWatch/StopWatchPage.dart';
 import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
@@ -12,7 +13,23 @@ class TodoListPage extends StatefulWidget {
 }
 
 class _TodoListPageState extends State<TodoListPage> {
-  List<DisplayData> todoList = [];
+  List<DisplayData> displayDataList = [];
+
+  Future<void> initDb() async {
+    await DbProvider.setDb();
+    displayDataList = await DbProvider.getDisplayData();
+    setState(() {
+      
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initDb();
+    // 受け取ったデータを状態を管理する変数に格納
+    // displayData = widget.displayData;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +38,17 @@ class _TodoListPageState extends State<TodoListPage> {
         title: const Text('リスト一覧'),
       ),
       body: ListView.builder(
-        itemCount: todoList.length,
+        itemCount: displayDataList.length,
         itemBuilder: (context, index) {
           return Card(
             child: ListTile(
-                title: Text(todoList[index].text),
+                title: Text(displayDataList[index].text),
                 subtitle: Text(DateFormat('yyyy/MM/dd HH:mm:ss')
-                    .format(todoList[index].dateTime)),
+                    .format(displayDataList[index].dateTime)),
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                        builder: (context) => TodoDetailPage(todoList[index])),
+                        builder: (context) => TodoDetailPage(displayDataList[index])),
                   );
                 }),
           );
@@ -50,11 +67,9 @@ class _TodoListPageState extends State<TodoListPage> {
                   return TodoAddPage();
                 }),
               );
-              if (newListText != null) {
-                setState(() {
-                  todoList.add(newListText);
-                });
-              }
+              setState(() {
+                displayDataList.add(newListText);
+              });
             },
             child: const Icon(Icons.add),
           ),
