@@ -18,9 +18,12 @@ class _TodoListPageState extends State<TodoListPage> {
   Future<void> initDb() async {
     await DbProvider.setDb();
     displayDataList = await DbProvider.getDisplayData();
-    setState(() {
-      
-    });
+    setState(() {});
+  }
+
+  Future<void> reBuild() async {
+    displayDataList = await DbProvider.getDisplayData();
+    setState(() {});
   }
 
   @override
@@ -37,22 +40,26 @@ class _TodoListPageState extends State<TodoListPage> {
       appBar: AppBar(
         title: const Text('リスト一覧'),
       ),
-      body: ListView.builder(
-        itemCount: displayDataList.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-                title: Text(displayDataList[index].text),
-                subtitle: Text(DateFormat('yyyy/MM/dd HH:mm:ss')
-                    .format(displayDataList[index].dateTime)),
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                        builder: (context) => TodoDetailPage(displayDataList[index])),
-                  );
-                }),
-          );
-        },
+      body: Scrollbar(
+        child: ListView.builder(
+          itemCount: displayDataList.length,
+          itemBuilder: (context, index) {
+            return Card(
+              child: ListTile(
+                  title: Text(displayDataList[index].text),
+                  subtitle: Text(DateFormat('yyyy/MM/dd HH:mm:ss')
+                      .format(displayDataList[index].dateTime)),
+                  onTap: () async {
+                    await Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              TodoDetailPage(displayDataList[index])),
+                    );
+                    reBuild();
+                  }),
+            );
+          },
+        ),
       ),
       floatingActionButton: Column(
         verticalDirection: VerticalDirection.up, // childrenの先頭を下に配置

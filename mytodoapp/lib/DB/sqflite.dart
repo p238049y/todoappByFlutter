@@ -39,7 +39,6 @@ class DbProvider {
 
   static Future<List<DisplayData>> getDisplayData() async {
     final List<Map<String, dynamic>> maps = await database!.query(tableName);
-    print(maps);
 
     if (maps.isEmpty) {
       return [];
