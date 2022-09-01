@@ -48,12 +48,13 @@ class _TodoListPageState extends State<TodoListPage> {
               itemBuilder: (context, index) {
                 return Card(
                     child: Slidable(
-                  endActionPane: ActionPane(
-                    motion: DrawerMotion(),
+                    endActionPane: ActionPane(
+                    motion: const ScrollMotion(),
                     children: [
                       SlidableAction(
-                        onPressed: (value) {
-                          print('削除');
+                        onPressed: (value) async{
+                          await DbProvider.deleteData(displayDataList[index].id);
+                          reBuild();
                         },
                         backgroundColor: Colors.red,
                         foregroundColor: Colors.white,

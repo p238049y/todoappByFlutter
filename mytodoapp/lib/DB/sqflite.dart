@@ -69,7 +69,7 @@ class DbProvider {
     );
   }
 
-  static Future<void> deleteData(DisplayData displayData) async {
-    await database!.delete(tableName ,where: 'id = ?', whereArgs: [displayData.id]);
+  static Future<void> deleteData(int id) async {
+    await database!.delete(tableName ,where: 'id = ?', whereArgs: [id]);
   }
 }
