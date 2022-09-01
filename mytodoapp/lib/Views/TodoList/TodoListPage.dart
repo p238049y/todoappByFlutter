@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import 'package:mytodoapp/DB/sqflite.dart';
 import 'package:mytodoapp/Views/StopWatch/StopWatchMainPage.dart';
@@ -46,6 +47,21 @@ class _TodoListPageState extends State<TodoListPage> {
               itemCount: displayDataList.length,
               itemBuilder: (context, index) {
                 return Card(
+                    child: Slidable(
+                  endActionPane: ActionPane(
+                    motion: DrawerMotion(),
+                    children: [
+                      SlidableAction(
+                        onPressed: (value) {
+                          print('削除');
+                        },
+                        backgroundColor: Colors.red,
+                        foregroundColor: Colors.white,
+                        icon: Icons.delete,
+                        label: '削除',
+                      ),
+                    ],
+                  ),
                   child: ListTile(
                       title: Text(displayDataList[index].text),
                       subtitle: Text(DateFormat('yyyy/MM/dd HH:mm:ss')
@@ -57,7 +73,7 @@ class _TodoListPageState extends State<TodoListPage> {
                                   TodoDetailPage(displayDataList[index])),
                         );
                       }),
-                );
+                ));
               },
             ),
           );
