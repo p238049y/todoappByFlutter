@@ -14,8 +14,8 @@ class DisplayData {
   String text;
   String detailInformation = '';
   DateTime dateTime = DateTime.utc(0, 0, 0);
-  String elapsedTime;
-  String targetTime;
+  String? elapsedTime;
+  String? targetTime;
 
   DisplayData({
     this.id = 0,

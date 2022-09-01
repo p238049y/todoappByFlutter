@@ -30,8 +30,6 @@ class _TodoListPageState extends State<TodoListPage> {
   void initState() {
     super.initState();
     initDb();
-    // 受け取ったデータを状態を管理する変数に格納
-    // displayData = widget.displayData;
   }
 
   @override
@@ -40,26 +38,30 @@ class _TodoListPageState extends State<TodoListPage> {
       appBar: AppBar(
         title: const Text('リスト一覧'),
       ),
-      body: Scrollbar(
-        child: ListView.builder(
-          itemCount: displayDataList.length,
-          itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                  title: Text(displayDataList[index].text),
-                  subtitle: Text(DateFormat('yyyy/MM/dd HH:mm:ss')
-                      .format(displayDataList[index].dateTime)),
-                  onTap: () async {
-                    await Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              TodoDetailPage(displayDataList[index])),
-                    );
-                    reBuild();
-                  }),
-            );
-          },
-        ),
+      body: FutureBuilder(
+        future: reBuild(),
+        builder: (context, snapshot) {
+          return Scrollbar(
+            child: ListView.builder(
+              itemCount: displayDataList.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: ListTile(
+                      title: Text(displayDataList[index].text),
+                      subtitle: Text(DateFormat('yyyy/MM/dd HH:mm:ss')
+                          .format(displayDataList[index].dateTime)),
+                      onTap: () async {
+                        await Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  TodoDetailPage(displayDataList[index])),
+                        );
+                      }),
+                );
+              },
+            ),
+          );
+        },
       ),
       floatingActionButton: Column(
         verticalDirection: VerticalDirection.up, // childrenの先頭を下に配置
