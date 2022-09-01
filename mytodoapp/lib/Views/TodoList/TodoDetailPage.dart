@@ -103,7 +103,7 @@ class _TodoDetailPage extends State<TodoDetailPage> {
                             child: Container(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                displayData.targetTime,
+                                displayData.targetTime ?? '',
                                 style: const TextStyle(fontSize: 18.0),
                               ),
                             )),
@@ -123,7 +123,7 @@ class _TodoDetailPage extends State<TodoDetailPage> {
                             child: Container(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                displayData.elapsedTime,
+                                displayData.elapsedTime ?? '',
                                 style: const TextStyle(fontSize: 18.0),
                               ),
                             )),

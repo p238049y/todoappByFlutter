@@ -10,11 +10,21 @@ class TodoAddPage extends StatefulWidget {
 }
 
 class DisplayData {
-  String text = '';
+  int id;
+  String text;
   String detailInformation = '';
   DateTime dateTime = DateTime.utc(0, 0, 0);
-  String elapsedTime = '';
-  String targetTime = '';
+  String? elapsedTime;
+  String? targetTime;
+
+  DisplayData({
+    this.id = 0,
+    required this.text,
+    required this.detailInformation,
+    required this.dateTime,
+    this.elapsedTime = '',
+    this.targetTime = '',
+  });
 }
 
 class _TodoAddPageState extends State<TodoAddPage> {
@@ -23,7 +33,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
   String _detailInformation = '';
   DateTime? _datetime;
 
-  DisplayData displayData = DisplayData();
+  DisplayData displayData = DisplayData(dateTime: DateTime.utc(0, 0, 0), detailInformation: '', text: '');
 
   @override
   Widget build(BuildContext context) {
