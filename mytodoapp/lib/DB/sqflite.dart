@@ -9,8 +9,7 @@ class DbProvider {
 
   static Future<void> _createTable(Database db, int version) async {
     await db.execute(
-      'CREATE TABLE $tableName(id INTEGER PRIMARY KEY AUTOINCREMENT, todo_title TEXT, detail_information TEXT, elapsed_time TEXT, target_time TEXT , created_at Text);'
-    );
+        'CREATE TABLE $tableName(id INTEGER PRIMARY KEY AUTOINCREMENT, todo_title TEXT, detail_information TEXT, elapsed_time TEXT, target_time TEXT , created_at Text);');
   }
 
   static Future<Database> initDb() async {
@@ -32,7 +31,7 @@ class DbProvider {
       'todo_title': displayData.text,
       'detail_information': displayData.detailInformation,
       'elapsed_time': displayData.elapsedTime,
-      'target_time':displayData.targetTime,
+      'target_time': displayData.targetTime,
       'created_at': displayData.dateTime.toString()
     });
   }
@@ -43,15 +42,30 @@ class DbProvider {
     if (maps.isEmpty) {
       return [];
     } else {
-      List<DisplayData> displayDataList = List.generate(maps.length, (index) => DisplayData(
-        id: maps[index]['id'],
-        text: maps[index]['todo_title'],
-        detailInformation: maps[index]['detail_information'],
-        elapsedTime: maps[index]['elapsed_time'],
-        targetTime: maps[index]['target_time'], 
-        dateTime: DateTime.parse(maps[index]['created_at']),
-      ));
+      List<DisplayData> displayDataList = List.generate(
+          maps.length,
+          (index) => DisplayData(
+                id: maps[index]['id'],
+                text: maps[index]['todo_title'],
+                detailInformation: maps[index]['detail_information'],
+                elapsedTime: maps[index]['elapsed_time'],
+                targetTime: maps[index]['target_time'],
+                dateTime: DateTime.parse(maps[index]['created_at']),
+              ));
       return displayDataList;
     }
+  }
+
+  static Future<void> updateData(DisplayData displayData) async {
+    await database!.update(tableName, {
+      'todo_title': displayData.text,
+      'detail_information': displayData.detailInformation,
+      'elapsed_time': displayData.elapsedTime,
+      'target_time': displayData.targetTime,
+      'created_at': displayData.dateTime.toString()
+    },
+      where: 'id = ?',
+      whereArgs: [displayData.id]
+    );
   }
 }
