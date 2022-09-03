@@ -163,7 +163,8 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                           onPrimary: Colors.grey,
                         ),
                         onPressed: () async {
-                          displayData.targetTime = model.initialSettingTime;
+                          displayData.targetTime = model.initialSettingTimeToDisplay;
+                          displayData.elapsedTime = model.elapsedTimeToDisplay;
                           await DbProvider.insertData(displayData);
                           Navigator.of(context).pop(displayData);
                         },
