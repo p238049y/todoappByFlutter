@@ -28,31 +28,8 @@ class TimerModel extends ChangeNotifier {
         isStopPressed = false;
         isStartPressed = true;
         checkTimer = true;
-      } else if (time < 60) {
-        int h = 0;
-        int m = 0;
-        initialSettingTime =
-            '${h.toString().padLeft(2, '0')}:${m.toString().padLeft(2, '0')}:${time.toString().padLeft(2, '0')}';
-        timeToDisplay =
-            '${h.toString().padLeft(2, '0')}:${m.toString().padLeft(2, '0')}:${time.toString().padLeft(2, '0')}';
-        time = time - 1;
-      } else if (time < 3600) {
-        int m = (time ~/ 60);
-        int s = time - (60 * m);
-        initialSettingTime =
-            '${m.toString().padLeft(2, '0')}:${s.toString().padLeft(2, '0')}';
-        timeToDisplay =
-            '${m.toString().padLeft(2, '0')}:${s.toString().padLeft(2, '0')}';
-        time = time - 1;
       } else {
-        int h = (time ~/ 3600);
-        int t = time - (3600 * h);
-        int m = (t ~/ 60);
-        int s = t - (60 * m);
-        initialSettingTime =
-            '${h.toString().padLeft(2, '0')}:${m.toString().padLeft(2, '0')}:${s.toString().padLeft(2, '0')}';
-        timeToDisplay =
-            '${h.toString().padLeft(2, '0')}:${m.toString().padLeft(2, '0')}:${s.toString().padLeft(2, '0')}';
+        timeToDisplay = convertDisplayTime(time);
         time = time - 1;
       }
       notifyListeners();
@@ -87,5 +64,24 @@ class TimerModel extends ChangeNotifier {
       timeToDisplay = '';
     }
     notifyListeners();
+  }
+
+  convertDisplayTime(int time) {
+    int hour = 0;
+    int minute = 0;
+    int seconds = 0;
+    if (time < 60) {
+      return '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}:${time.toString().padLeft(2, '0')}';
+    } else if (time < 3600) {
+      minute = (time ~/ 60);
+      seconds = time - (60 * minute);
+      return '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+    } else {
+      hour = (time ~/ 3600);
+      time = time - (3600 * hour);
+      minute = (time ~/ 60);
+      seconds = time - (60 * minute);
+      return '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+    }
   }
 }
