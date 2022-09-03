@@ -12,8 +12,11 @@ class TimerModel extends ChangeNotifier {
   bool checkTimer = true;
 
   int time = 0;
+  int initialSettingTime = 0;
+  int elapsedTime = 0;
   String timeToDisplay = '';
-  String initialSettingTime = '';
+  String initialSettingTimeToDisplay = '';
+  String elapsedTimeToDisplay = '';
   final duration = const Duration(seconds: 1);
 
   startTimer() {
@@ -21,10 +24,14 @@ class TimerModel extends ChangeNotifier {
     isStopPressed = true;
 
     time = (hour * 60 * 60) + (min * 60) + sec;
+    initialSettingTime = time;
+    initialSettingTimeToDisplay = convertDisplayTime(time);
     Timer.periodic(duration, (Timer t) {
       if (time < 1 || checkTimer == false) {
         t.cancel();
         timeToDisplay = 'Finish!!!';
+        elapsedTime = initialSettingTime - time;
+        elapsedTimeToDisplay = convertDisplayTime(elapsedTime);
         isStopPressed = false;
         isStartPressed = true;
         checkTimer = true;
