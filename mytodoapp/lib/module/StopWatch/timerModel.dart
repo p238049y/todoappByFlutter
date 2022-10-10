@@ -30,14 +30,14 @@ class TimerModel extends ChangeNotifier {
     }
 
     Timer.periodic(duration, (Timer t) {
-      if (time < 1 || checkTimer == false) {
+      if (checkTimer == false) {
         t.cancel();
-        timeToDisplay = 'Finish!!!';
         elapsedTime = initialSettingTime - time;
         elapsedTimeToDisplay = convertDisplayTime(elapsedTime);
         isStopPressed = false;
         isStartPressed = true;
         checkTimer = true;
+      }
       } else {
         timeToDisplay = convertDisplayTime(time);
         time = time - 1;
