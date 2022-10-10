@@ -38,10 +38,20 @@ class TimerModel extends ChangeNotifier {
         isStartPressed = true;
         checkTimer = true;
       }
+      
+      if (time < 1) {
+        t.cancel();
+        timeToDisplay = 'Finish!!!';
+        elapsedTime = initialSettingTime;
+        elapsedTimeToDisplay = convertDisplayTime(elapsedTime);
+        isStopPressed = false;
+        isStartPressed = false;
+        checkTimer = true;
       } else {
         timeToDisplay = convertDisplayTime(time);
         time = time - 1;
       }
+
       notifyListeners();
     });
   }
