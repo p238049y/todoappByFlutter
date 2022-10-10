@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mytodoapp/DB/sqflite.dart';
 import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
-import 'package:mytodoapp/Views/TodoList/TodoListPage.dart';
 import 'package:mytodoapp/module/StopWatch/timerModel.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:provider/provider.dart';
