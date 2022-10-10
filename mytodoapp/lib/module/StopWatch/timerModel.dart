@@ -7,7 +7,7 @@ class TimerModel extends ChangeNotifier {
   int min = 0;
   int sec = 0;
 
-  bool isStopPressed = true;
+  bool isStopPressed = false;
   bool isStartPressed = true;
   bool checkTimer = true;
 
@@ -23,22 +23,35 @@ class TimerModel extends ChangeNotifier {
     isStartPressed = false;
     isStopPressed = true;
 
-    time = (hour * 60 * 60) + (min * 60) + sec;
-    initialSettingTime = time;
-    initialSettingTimeToDisplay = convertDisplayTime(time);
+    if (time == 0) {
+      time = (hour * 60 * 60) + (min * 60) + sec;
+      initialSettingTime = time;
+      initialSettingTimeToDisplay = convertDisplayTime(time);
+    }
+
     Timer.periodic(duration, (Timer t) {
-      if (time < 1 || checkTimer == false) {
+      if (checkTimer == false) {
         t.cancel();
-        timeToDisplay = 'Finish!!!';
         elapsedTime = initialSettingTime - time;
         elapsedTimeToDisplay = convertDisplayTime(elapsedTime);
         isStopPressed = false;
         isStartPressed = true;
         checkTimer = true;
+      }
+      
+      if (time < 1) {
+        t.cancel();
+        timeToDisplay = 'Finish!!!';
+        elapsedTime = initialSettingTime;
+        elapsedTimeToDisplay = convertDisplayTime(elapsedTime);
+        isStopPressed = false;
+        isStartPressed = false;
+        checkTimer = true;
       } else {
         timeToDisplay = convertDisplayTime(time);
         time = time - 1;
       }
+
       notifyListeners();
     });
   }
