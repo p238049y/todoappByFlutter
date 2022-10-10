@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mytodoapp/DB/sqflite.dart';
 import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
 import 'package:mytodoapp/module/StopWatch/stopWatchModel.dart';
 import 'package:provider/provider.dart';
@@ -83,6 +84,23 @@ class StopWatchPage extends StatelessWidget {
                         model.isStartPressed ? model.startStopWatch : null,
                     child: const Text(
                       'START',
+                      style: TextStyle(color: Colors.white, fontSize: 18.0),
+                    ),
+                  ),
+                  const SizedBox(height: 20.0),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blue,
+                      onPrimary: Colors.grey,
+                    ),
+                    onPressed:() async {
+                      displayData.targetTime = "ストップウォッチを使用したため未設定";
+                      displayData.elapsedTime = model.stopWatchTimeDisplay;
+                      await DbProvider.insertData(displayData);
+                      Navigator.of(context).pop(displayData);
+                    },
+                    child: const Text(
+                      'ADD',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
                     ),
                   ),
