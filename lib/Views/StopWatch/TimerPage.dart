@@ -42,7 +42,7 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
         child: SizedBox(
           height: 300,
           width: 300,
-          child: CircularProgressIndicator(value: 0.5),
+          child: CircularProgressIndicator(value: 1, strokeWidth: 10),
         ),
       );
     } else {
@@ -128,6 +128,7 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
             displayData.text,
             style: const TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold),
           ),
+          const SizedBox(height: 24.0),
           // タイマー設定部分
           createTimerWidget(isDisplayTimerWidget, model),
           // 時間表示部分
@@ -141,6 +142,7 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
               ),
             ),
           ),
+          // ボタン群のコード
           Expanded(
             flex: 3,
             child: Row(
