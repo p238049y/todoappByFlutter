@@ -38,11 +38,26 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
 
   Widget createTimerWidget(bool value, TimerModel model) {
     if (value) {
-      return const Center(
-        child: SizedBox(
-          height: 300,
-          width: 300,
-          child: CircularProgressIndicator(value: 1, strokeWidth: 10),
+      return Center(
+        child: Stack(
+          children: [
+            const Center(
+              child: SizedBox(
+                height: 300,
+                width: 300,
+                child: CircularProgressIndicator(value: 1, strokeWidth: 10),
+              ),
+            ),
+            Center(
+              child: Text(
+              model.timeToDisplay,
+              style: const TextStyle(
+                fontSize: 35.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            ),
+          ],
         ),
       );
     } else {
