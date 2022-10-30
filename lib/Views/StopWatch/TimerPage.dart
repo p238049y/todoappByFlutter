@@ -146,17 +146,6 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
           const SizedBox(height: 24.0),
           // タイマー設定部分
           createTimerWidget(isDisplayTimerWidget, model),
-          // 時間表示部分
-          Expanded(
-            flex: 1,
-            child: Text(
-              model.timeToDisplay,
-              style: const TextStyle(
-                fontSize: 35.0,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
           // ボタン群のコード
           Expanded(
             flex: 3,
