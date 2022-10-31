@@ -38,25 +38,18 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
 
   Widget createTimerWidget(bool value, TimerModel model) {
     if (value) {
-      return Center(
+      return SizedBox(
+        height: 300,
+        width: 300,
         child: Stack(
+          fit: StackFit.expand,
           children: [
-            const Center(
-              child: SizedBox(
-                height: 300,
-                width: 300,
-                child: CircularProgressIndicator(value: 1, strokeWidth: 10),
-              ),
+            const CircularProgressIndicator(
+              value: 1,
+              strokeWidth: 10,
+              valueColor: AlwaysStoppedAnimation(Colors.lightBlue),
             ),
-            Center(
-              child: Text(
-              model.timeToDisplay,
-              style: const TextStyle(
-                fontSize: 35.0,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            ),
+            Center(child: displayTime(model))
           ],
         ),
       );
@@ -129,6 +122,20 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
       );
     }
   }
+
+  // 時間表示用のWidget
+  Widget displayTime(TimerModel model) {
+    return const Text(
+      "hoge",
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 35.0,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  // 時間を指定するためのWidget
 
   @override
   Widget build(BuildContext context) {
