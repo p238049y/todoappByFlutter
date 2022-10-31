@@ -49,12 +49,31 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
               strokeWidth: 10,
               valueColor: AlwaysStoppedAnimation(Colors.lightBlue),
             ),
-            Center(child: displayTime(model))
+            Center(child: displayTimeWidget(model))
           ],
         ),
       );
     } else {
-      return Expanded(
+      return settingTimeWidget(model);
+    }
+  }
+
+  // 時間表示用のWidget
+  Widget displayTimeWidget(TimerModel model) {
+    return const Text(
+      "hoge",
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 35.0,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  // 時間を指定するためのWidget
+  Widget settingTimeWidget (TimerModel model) {
+    return 
+      Expanded(
         flex: 6,
         child:
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
@@ -120,22 +139,7 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
           ),
         ]),
       );
-    }
   }
-
-  // 時間表示用のWidget
-  Widget displayTime(TimerModel model) {
-    return const Text(
-      "hoge",
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        fontSize: 35.0,
-        fontWeight: FontWeight.w600,
-      ),
-    );
-  }
-
-  // 時間を指定するためのWidget
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +169,9 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                     onPrimary: Colors.grey,
                   ),
                   onPressed: () {
-                    model.isStartPressed ? model.startTimer : null;
+                    if (model.isStartPressed) {
+                      model.startTimer;
+                    }
                     switchTimerWidget();
                   },
                   child: const Text(
