@@ -30,9 +30,9 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
     displayData = widget.displayData;
   }
 
-  void switchTimerWidget() {
+  void switchTimerWidget(TimerModel model) {
     setState(() {
-      isDisplayTimerWidget = !isDisplayTimerWidget;
+      isDisplayTimerWidget = true;
     });
   }
 
@@ -44,10 +44,11 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            const CircularProgressIndicator(
-              value: 1,
+            CircularProgressIndicator(
+              value: 1 - model.timeSec / model.initialSettingTime,
               strokeWidth: 10,
-              valueColor: AlwaysStoppedAnimation(Colors.lightBlue),
+              valueColor: const AlwaysStoppedAnimation(Colors.grey),
+              backgroundColor: Colors.lightBlue,
             ),
             Center(child: displayTimeWidget(model))
           ],
@@ -60,10 +61,10 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
 
   // 時間表示用のWidget
   Widget displayTimeWidget(TimerModel model) {
-    return const Text(
-      "hoge",
+    return Text(
+      model.timeToDisplay,
       textAlign: TextAlign.center,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 35.0,
         fontWeight: FontWeight.w600,
       ),
@@ -169,10 +170,8 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                     onPrimary: Colors.grey,
                   ),
                   onPressed: () {
-                    if (model.isStartPressed) {
-                      model.startTimer;
-                    }
-                    switchTimerWidget();
+                    model.isStartPressed ? model.startTimer() : null;
+                    switchTimerWidget(model);
                   },
                   child: const Text(
                     'START',
