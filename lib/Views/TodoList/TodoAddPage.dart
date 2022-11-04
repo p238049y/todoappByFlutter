@@ -101,57 +101,64 @@ class _TodoAddPageState extends State<TodoAddPage> {
                     return null;
                   }),
               const SizedBox(height: 24),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8, right: 4),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.red,
-                        onPrimary: Colors.grey,
-                      ),
-                      onPressed: () {
-                        displayData.dateTime = DateTime.now();
-                        if (displayData.text.isEmpty) {
-                          return;
-                        } else {
-                          Navigator.of(context).pop(displayData);
-                        }
-                      },
-                      child: const Text(
-                        'リストへ追加',
-                        style: TextStyle(color: Colors.white, fontSize: 18.0),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 4, right: 8),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.green,
-                        onPrimary: Colors.grey,
-                      ),
-                      onPressed: () {
-                        displayData.dateTime = DateTime.now();
-                        if (displayData.text.isEmpty) {
-                          return;
-                        } else {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => StopWatchMainPage(displayData: displayData)));
-                        }
-                      },
-                      child: const Text(
-                        '時間計測へ',
-                        style: TextStyle(color: Colors.white, fontSize: 18.0),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              buttonGroupWidget(
+                  displayData, isTodoNameError, isDetailInformationError)
             ]),
       ),
+    );
+  }
+
+  Widget buttonGroupWidget(DisplayData displayData, bool isTodoNameError,
+      bool isDetailInformationError) {
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 8, right: 4),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Colors.red,
+              onPrimary: Colors.grey,
+            ),
+            onPressed: () {
+              displayData.dateTime = DateTime.now();
+              if (displayData.text.isEmpty || isTodoNameError || isDetailInformationError) {
+                return;
+              } else {
+                Navigator.of(context).pop(displayData);
+              }
+            },
+            child: const Text(
+              'リストへ追加',
+              style: TextStyle(color: Colors.white, fontSize: 18.0),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 4, right: 8),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Colors.green,
+              onPrimary: Colors.grey,
+            ),
+            onPressed: () {
+              displayData.dateTime = DateTime.now();
+              if (displayData.text.isEmpty || isTodoNameError || isDetailInformationError) {
+                return;
+              } else {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            StopWatchMainPage(displayData: displayData)));
+              }
+            },
+            child: const Text(
+              '時間計測へ',
+              style: TextStyle(color: Colors.white, fontSize: 18.0),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
