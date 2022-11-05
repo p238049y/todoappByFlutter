@@ -1,6 +1,6 @@
 // 入力項目のバリデーションチェック
 String? inputValidation(String value, int characterLimit) {
-  if (value.isEmpty) {
+  if (value == '') {
     return 'こちらは必須項目です。';
   } else if (value.contains(' ') && value.trim() == '') {
     return '空文字は受け付けていません。';
