@@ -67,6 +67,8 @@ class _TodoAddPageState extends State<TodoAddPage> {
                   validator: (value) {
                     if (inputValidation(value!, 30) != null) {
                       isTodoNameError = true;
+                    } else {
+                      isTodoNameError = false;
                     }
 
                     return inputValidation(value, 30);
@@ -91,6 +93,8 @@ class _TodoAddPageState extends State<TodoAddPage> {
                   validator: (value) {
                     if (inputValidation(value!, 256) != null) {
                       isDetailInformationError = true;
+                    } else {
+                      isDetailInformationError = false;
                     }
 
                     return inputValidation(value, 256);
