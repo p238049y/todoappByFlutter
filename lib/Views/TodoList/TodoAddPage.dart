@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_picker/flutter_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:mytodoapp/Views/StopWatch/StopWatchMainPage.dart';
+import 'package:mytodoapp/module/TodoList/todoAdd.dart';
 
 class TodoAddPage extends StatefulWidget {
   @override
@@ -33,7 +34,11 @@ class _TodoAddPageState extends State<TodoAddPage> {
   String _detailInformation = '';
   DateTime? _datetime;
 
-  DisplayData displayData = DisplayData(dateTime: DateTime.utc(0, 0, 0), detailInformation: '', text: '');
+  DisplayData displayData = DisplayData(
+      dateTime: DateTime.utc(0, 0, 0), detailInformation: '', text: '');
+
+  bool isTodoNameError = false;
+  bool isDetailInformationError = false;
 
   @override
   Widget build(BuildContext context) {
@@ -60,18 +65,11 @@ class _TodoAddPageState extends State<TodoAddPage> {
                   },
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
-                    if (value!.contains(' ') && value.trim() == '') {
-                      return '空文字は受け付けていません。';
+                    if (inputValidation(value!, 30) != null) {
+                      isTodoNameError = true;
                     }
 
-                    if (value.contains('　') && value.trim() == '') {
-                      return '空文字は受け付けていません。';
-                    }
-
-                    if (value.length > 30) {
-                      return '30文字以下にしてください';
-                    }
-                    return null;
+                    return inputValidation(value, 30);
                   }),
               const SizedBox(height: 24),
               TextFormField(
@@ -91,14 +89,11 @@ class _TodoAddPageState extends State<TodoAddPage> {
                   },
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
-                    if (value!.contains(' ') && value.trim() == '') {
-                      return '空文字は受け付けていません。';
+                    if (inputValidation(value!, 256) != null) {
+                      isDetailInformationError = true;
                     }
 
-                    if (value.contains('　') && value.trim() == '') {
-                      return '空文字は受け付けていません。';
-                    }
-                    return null;
+                    return inputValidation(value, 256);
                   }),
               const SizedBox(height: 24),
               buttonGroupWidget(
