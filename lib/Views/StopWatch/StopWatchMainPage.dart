@@ -5,8 +5,8 @@ import 'package:mytodoapp/Views/TodoList/TodoAddPage.dart';
 
 class StopWatchMainPage extends StatelessWidget {
   final _tab = <Tab>[
-    const Tab(text: 'タイマー', icon: Icon(Icons.av_timer)),
-    const Tab(text: 'ストップウォッチ', icon: Icon(Icons.timer)),
+    const Tab(icon: Icon(Icons.av_timer), height: 40),
+    const Tab( icon: Icon(Icons.timer), height: 40),
   ];
   final DisplayData displayData;
 
@@ -20,7 +20,7 @@ class StopWatchMainPage extends StatelessWidget {
           appBar: AppBar(
             title: const Text("時間管理"),
             bottom: TabBar(
-              tabs: _tab,
+              tabs: _tab,              
             ),
           ),
           body: TabBarView(
