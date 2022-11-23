@@ -51,6 +51,9 @@ dependencies:
   get:
   gap: ^2.0.0
 
+  # OSS (https://github.com/microsoft/fluentui-system-icons)
+  fluentui_icons: ^1.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
