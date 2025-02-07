@@ -166,8 +166,8 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
               children: <Widget>[
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.orange,
-                    onPrimary: Colors.grey,
+                    backgroundColor: Colors.orange,
+                    foregroundColor: Colors.grey,
                   ),
                   onPressed: () {
                     model.isStartPressed ? model.startTimer() : null;
@@ -180,8 +180,8 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green,
-                    onPrimary: Colors.grey,
+                    backgroundColor: Colors.green,
+                    foregroundColor: Colors.grey,
                   ),
                   onPressed: model.isStopPressed ? model.stopTimer : null,
                   child: const Text(
@@ -191,8 +191,8 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
-                    onPrimary: Colors.grey,
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.grey,
                   ),
                   onPressed: () async {
                     displayData.targetTime = model.initialSettingTimeToDisplay;
