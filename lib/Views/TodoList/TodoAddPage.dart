@@ -115,8 +115,8 @@ class _TodoAddPageState extends State<TodoAddPage> {
           padding: const EdgeInsets.only(left: 8, right: 4),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: Colors.red,
-              onPrimary: Colors.grey,
+              backgroundColor: Colors.red,
+              foregroundColor: Colors.grey,
             ),
             onPressed: () {
               displayData.dateTime = DateTime.now();
@@ -136,8 +136,8 @@ class _TodoAddPageState extends State<TodoAddPage> {
           padding: const EdgeInsets.only(left: 4, right: 8),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: Colors.green,
-              onPrimary: Colors.grey,
+              backgroundColor: Colors.green,
+              foregroundColor: Colors.grey,
             ),
             onPressed: () {
               displayData.dateTime = DateTime.now();

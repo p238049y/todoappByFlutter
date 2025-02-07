@@ -43,8 +43,8 @@ class StopWatchPage extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 70, right: 8),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.red,
-                            onPrimary: Colors.grey,
+                            backgroundColor: Colors.red,
+                            foregroundColor: Colors.grey,
                           ),
                           onPressed:
                               model.isStopPressed ? null : model.stopStopWatch,
@@ -59,8 +59,8 @@ class StopWatchPage extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 30, right: 8),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.green,
-                            onPrimary: Colors.grey,
+                            backgroundColor: Colors.green,
+                            foregroundColor: Colors.grey,
                           ),
                           onPressed: model.isResetPressed
                               ? null
@@ -77,8 +77,8 @@ class StopWatchPage extends StatelessWidget {
                   const SizedBox(height: 20.0),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.orange,
-                      onPrimary: Colors.grey,
+                      backgroundColor: Colors.orange,
+                      foregroundColor: Colors.grey,
                     ),
                     onPressed:
                         model.isStartPressed ? model.startStopWatch : null,
@@ -90,8 +90,8 @@ class StopWatchPage extends StatelessWidget {
                   const SizedBox(height: 20.0),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      onPrimary: Colors.grey,
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.grey,
                     ),
                     onPressed:() async {
                       displayData.targetTime = "ストップウォッチを使用したため未設定";
