@@ -1,9 +1,8 @@
 // リスト追加画面用Widget
 import 'package:flutter/material.dart';
-import 'package:flutter_picker/flutter_picker.dart';
-import 'package:intl/intl.dart';
-import 'package:mytodoapp/Views/StopWatch/StopWatchMainPage.dart';
 import 'package:mytodoapp/module/TodoList/todoAdd.dart';
+
+import 'widget/ButtonGroupWidget.dart';
 
 class TodoAddPage extends StatefulWidget {
   @override
@@ -29,11 +28,6 @@ class DisplayData {
 }
 
 class _TodoAddPageState extends State<TodoAddPage> {
-  // 入力されたテキストをデータとして持つ
-  String _text = '';
-  String _detailInformation = '';
-  DateTime? _datetime;
-
   DisplayData displayData = DisplayData(
       dateTime: DateTime.utc(0, 0, 0), detailInformation: '', text: '');
 
@@ -47,7 +41,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
         title: const Text('タスク追加'),
       ),
       body: Container(
-        padding: const EdgeInsets.all(50),
+        padding: const EdgeInsets.all(16),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
@@ -99,7 +93,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
 
                     return inputValidation(value, 256);
                   }),
-              const SizedBox(height: 24),
+              const SizedBox(height: 16),
               ButtonGroupWidget(
                   displayData: displayData,
                   isTodoNameError: isTodoNameError,
