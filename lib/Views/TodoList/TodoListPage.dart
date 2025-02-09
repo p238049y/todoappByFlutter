@@ -67,6 +67,7 @@ class _TodoListPageState extends State<TodoListPage> {
                   ),
                   child: ListTile(
                       title: Text(displayDataList[index].text),
+                      tileColor: Colors.white60,
                       subtitle: Text(DateFormat('yyyy/MM/dd HH:mm:ss')
                           .format(displayDataList[index].dateTime)),
                       onTap: () async {
@@ -89,6 +90,7 @@ class _TodoListPageState extends State<TodoListPage> {
           FloatingActionButton(
             heroTag: 'todoAdd',
             backgroundColor: Colors.blue,
+            shape: const CircleBorder(),
             onPressed: () async {
               final newListText = await Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) {
@@ -99,7 +101,10 @@ class _TodoListPageState extends State<TodoListPage> {
                 displayDataList.add(newListText);
               });
             },
-            child: const Icon(Icons.add),
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
           ),
         ],
       ),
