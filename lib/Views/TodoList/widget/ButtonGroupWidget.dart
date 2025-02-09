@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mytodoapp/DB/sqflite.dart';
 import 'package:mytodoapp/Views/StopWatch/StopWatchMainPage.dart';
 
 import '../TodoAddPage.dart';
@@ -29,13 +30,14 @@ class ButtonGroupWidget extends StatelessWidget {
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.grey,
                 ),
-                onPressed: () {
+                onPressed: () async {
                   displayData.dateTime = DateTime.now();
                   if (displayData.text.isEmpty ||
                       isTodoNameError ||
                       isDetailInformationError) {
                     return;
                   } else {
+                    await DbProvider.insertData(displayData);
                     Navigator.of(context).pop(displayData);
                   }
                 },
