@@ -22,6 +22,7 @@ jobs:
         with:
           channel: stable
           flutter-version-file: pubspec.yaml
+          cache: true
       - name: 正常にインストールできているかを確認
         run: flutter --version
 
