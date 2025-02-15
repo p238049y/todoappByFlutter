@@ -20,8 +20,8 @@ jobs:
       - name: CIジョブを動かすためのflutterの環境構築
         uses: subosito/flutter-action@v2
         with:
-          flutter-version-file: pubspec.yaml
           channel: stable
+          flutter-version-file: ../../pubspec.yaml
       - name: 正常にインストールできているかを確認
         run: flutter --version
 
