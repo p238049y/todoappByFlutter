@@ -47,7 +47,7 @@ dependencies:
   sqflite: ^2.0.2
 
   path: ^1.8.1
-  flutter_slidable: ^3.0.0
+  flutter_slidable: ^4.0.0
 
   get:
   gap: ^2.0.0
